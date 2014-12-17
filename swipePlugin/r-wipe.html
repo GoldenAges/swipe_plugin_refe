@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>R-Swipe's Plugin</title>
+	<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<style type="text/css">
+
+		#wrap{
+			border: 1px solid #08c;
+			width: 500px;
+			height: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.hid{
+			position: absolute;
+			left: 10%;
+			top: 10%;
+			visibility: hidden;
+		}
+		.show{
+			visibility: visible;			
+		}
+	</style>
+</head> 
+<body>
+	<div id="wrap">
+		<div class="hid"><img src="http://placehold.it/400x400" alt=""></div>
+		<div class="hid"><img src="http://placehold.it/400x401" alt=""></div>
+		<div class="hid"><img src="http://placehold.it/400x402" alt=""></div>
+		<div class="hid"><img src="http://placehold.it/400x403" alt=""></div>
+	</div>
+	<script>
+		var i = 0;
+		$(function(){
+			var silders = $("#wrap").children();
+			setInterval(showDiv,500,silders);
+		}) 
+
+		function showDiv(silders){
+				var len = silders.length;
+				var ele = silders[i];
+				var pre = silders[i - 1] || silders[len - 1]
+				console.log(i,ele);
+				i++;
+				if(i>len - 1)
+				{
+					i = 0;
+				}
+				$(pre).removeClass('show');
+				$(ele).toggleClass("show");
+			}
+	</script>
+</body>
+</html>
